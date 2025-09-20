@@ -6,6 +6,6 @@ export interface ContactMethod {
 
 export interface ContactData {
   title: string;
-  description: string;
+
   methods: ContactMethod[];
 }

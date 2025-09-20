@@ -6,12 +6,7 @@ type ClientType = "default" | "gmail" | "outlook" | "yahoo";
 const Contact: React.FC = () => {
   const [selectedClient, setSelectedClient] = useState<ClientType>("default");
 
-  const emailMethod = CONTACT_DATA.methods.find(
-    (method) => method.name.toLowerCase() === "email",
-  );
-  if (!emailMethod) return null;
-
-  const email = emailMethod.value;
+  const email = "revelcahyadi2004@gmail.com";
   const subject = "Contact from Portfolio";
   const body = "Hello, I would like to get in touch regarding...";
 
@@ -23,7 +18,7 @@ const Contact: React.FC = () => {
   };
 
   const handleClientSelect = (client: ClientType) => {
-    setSelectedClient(client); // Only updates the selection, no redirect
+    setSelectedClient(client);
   };
 
   const handleEmailClick = () => {
@@ -69,17 +64,16 @@ const Contact: React.FC = () => {
                 <div className="text-gray-300">{method.value}</div>
               </a>
             ))}
-            {emailMethod && (
-              <button
-                onClick={handleEmailClick}
-                className="bg-[#2a323a] hover:bg-gray-700 hover:scale-105 transition-all duration-300 text-white font-medium py-4 px-6 rounded-lg border border-gray-600 w-full sm:w-auto md:min-w-[250px]"
-              >
-                <div className="text-[#d9c179] text-lg font-semibold">
-                  Email (via {selectedClient})
-                </div>
-                <div className="text-gray-300">{email}</div>
-              </button>
-            )}
+
+            <button
+              onClick={handleEmailClick}
+              className="bg-[#2a323a] hover:bg-gray-700 hover:scale-105 transition-all duration-300 text-white font-medium py-4 px-6 rounded-lg border border-gray-600 w-full sm:w-auto md:min-w-[250px]"
+            >
+              <div className="text-[#d9c179] text-lg font-semibold">
+                Email (via {selectedClient})
+              </div>
+              <div className="text-gray-300">{email}</div>
+            </button>
           </div>
         </div>
       </div>

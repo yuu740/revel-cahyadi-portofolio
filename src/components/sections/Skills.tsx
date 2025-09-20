@@ -48,7 +48,7 @@ const Skills: React.FC = () => {
                 {skillCategory.items.map((item) => (
                   <motion.span
                     key={item.name}
-                    className="bg-gray-700 text-gray-200 px-4 py-2 rounded-md font-medium flex items-center gap-2"
+                    className="group bg-gray-700 text-gray-200 px-4 py-2 rounded-md font-medium flex items-center gap-2 cursor-pointer"
                     whileHover={{
                       scale: 1.05,
                       backgroundColor: "#d9c179",
@@ -58,16 +58,9 @@ const Skills: React.FC = () => {
                   >
                     {item.name}
                     {item.framework && item.framework.length > 0 && (
-                      <motion.span
-                        className="text-xs bg-[#d9c179]/20 text-[#d9c179] px-2 py-1 rounded-full"
-                        whileHover={{
-                          backgroundColor: "#2a323a",
-                          color: "#ffffff",
-                        }}
-                        transition={{ duration: 0.3 }}
-                      >
+                      <span className="text-xs bg-[#d9c179]/20 text-[#d9c179] px-2 py-1 rounded-full transition-colors duration-300 group-hover:bg-[#2a323a] group-hover:text-white">
                         {item.framework.join(", ")}
-                      </motion.span>
+                      </span>
                     )}
                   </motion.span>
                 ))}

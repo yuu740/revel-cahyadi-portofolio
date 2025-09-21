@@ -5,6 +5,7 @@ import ProgateBootCampJS from "../assets/documents/certificate/ProgateBootCampJS
 import ProgateBootCampPython from "../assets/documents/certificate/ProgateBootCampPython.pdf";
 import ProgateBootCampSQL from "../assets/documents/certificate/ProgateBootCampSQL.pdf";
 import UNTARAchievement from "../assets/documents/certificate/UNT(AR)HackathonAchievement.pdf";
+import AlibabaCloud from "../assets/documents/certificate/AlibabaCloud.pdf";
 export const CERTIFICATES_DATA: Certificate[] = [
   {
     title: "Progate Bootcamp Frontend",
@@ -35,5 +36,10 @@ export const CERTIFICATES_DATA: Certificate[] = [
     title: "UNTAR Hackathon Achievement",
     issuer: "UNTAR",
     fileUrl: UNTARAchievement,
+  },
+  {
+    title: "Alibaba Cloud",
+    issuer: "Alibaba Cloud",
+    fileUrl: AlibabaCloud,
   },
 ];

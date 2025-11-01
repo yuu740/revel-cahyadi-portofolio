@@ -1,7 +1,5 @@
-// Impor 'type' dari interface untuk memberi tipe pada data
 import type { AboutData } from "../interfaces/about.interface";
 
-// Ekspor data sebagai konstanta bertipe (typed constant)
 export const ABOUT_DATA: AboutData = {
   personalInfo: [
     { label: "Place of Birth", value: "Jakarta" },

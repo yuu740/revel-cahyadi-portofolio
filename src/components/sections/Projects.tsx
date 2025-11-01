@@ -3,6 +3,132 @@ import { motion } from "framer-motion";
 import { PROJECTS_DATA } from "../../constants/projects";
 import type { Project } from "../../interfaces/project.interface";
 
+const completedProjects = PROJECTS_DATA.filter(
+  (p) => !p.isOnDeveloping,
+);
+const developingProjects = PROJECTS_DATA.filter(
+  (p) => p.isOnDeveloping,
+);
+
+const visibleTags = (tags: string[], maxVisible: number = 4) =>
+  tags.length > maxVisible ? tags.slice(0, maxVisible) : tags;
+
+interface ProjectCardProps {
+  project: Project;
+  index: number;
+  onOpenModal: (project: Project) => void;
+}
+
+const ProjectCard: React.FC<ProjectCardProps> = ({
+  project,
+  index,
+  onOpenModal,
+}) => (
+  <motion.div
+                key={project.id}
+                className="bg-[#2a323a] rounded-lg overflow-hidden shadow-lg flex flex-col min-h-[420px]"
+    initial={{ opacity: 0, y: 50 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, amount: 0.5 }}
+    transition={{ duration: 0.5, delay: index * 0.2 }}
+  >
+    <img
+      src={project.imageUrl}
+      alt={project.title}
+      className="w-full h-48 object-cover"
+      onError={(e) => {
+        e.currentTarget.src = "/fallback-image.png";
+      }}
+    />
+
+    <div className="p-6 flex flex-col flex-1 justify-between">
+      <div>
+                    <div className="flex items-center mb-2">
+                      <h3 className="text-xl font-bold text-white">
+            {project.title}
+          </h3>
+
+          {project.isOnDeveloping && (
+            <span className="ml-2 text-xs bg-blue-500/20 text-blue-400 px-2 py-1 rounded-full">
+              Developing
+            </span>
+          )}
+          {project.isContributor && (
+            <span className="ml-2 text-xs bg-green-500/20 text-green-400 px-2 py-1 rounded-full">
+              Contributor
+            </span>
+          )}
+        </div>
+
+        <p className="text-gray-400 mb-4 line-clamp-3">
+          {project.description}
+        </p>
+
+        <div className="flex flex-wrap gap-2 mb-4">
+          {visibleTags(project.tags).map((tag) => (
+            <motion.span
+              key={tag}
+              className="text-xs bg-[#d9c179]/20 text-[#d9c179] px-2 py-1 rounded-full"
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.3 }}
+            >
+              {tag}
+            </motion.span>
+          ))}
+
+          {project.tags.length > 4 && (
+            <motion.span
+              className="text-xs bg-[#d9c179]/20 text-[#d9c179] px-2 py-1 rounded-full cursor-pointer"
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.3 }}
+              onClick={() => onOpenModal(project)}
+            >
+              +{project.tags.length - 4} more...
+            </motion.span>
+          )}
+        </div>
+      </div>
+
+      <div className="flex justify-between items-center mt-auto space-x-3">
+        <motion.button
+          onClick={() => onOpenModal(project)}
+          className="text-[#d9c179] hover:underline"
+          whileHover={{ scale: 1.05 }}
+          transition={{ duration: 0.3 }}
+        >
+          Details
+        </motion.button>
+        <div className="flex space-x-3">
+          {project.liveUrl && (
+            <motion.a
+              href={project.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+                          className="text-[#d9c179] hover:underline"
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.3 }}
+            >
+              Live Demo
+            </motion.a>
+          )}
+          {project.repoUrl && (
+            <motion.a
+              href={project.repoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+                          className="text-[#d9c179] hover:underline"
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.3 }}
+            >
+              GitHub
+            </motion.a>
+          )}
+        </div>
+      </div>
+    </div>
+  </motion.div>
+);
+
 const Projects: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
@@ -10,9 +136,6 @@ const Projects: React.FC = () => {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
   };
-
-  const visibleTags = (tags: string[], maxVisible: number = 4) =>
-    tags.length > maxVisible ? tags.slice(0, maxVisible) : tags;
 
   const handleOpenModal = (project: Project) => {
     setSelectedProject(project);
@@ -26,7 +149,7 @@ const Projects: React.FC = () => {
     <>
       <motion.section
         id="projects"
-        className="py-20 bg-[#1f262c]"
+        className="py-20 bg-background-secondary" 
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
@@ -34,7 +157,7 @@ const Projects: React.FC = () => {
       >
         <div className="container mx-auto px-4">
           <motion.h2
-            className="text-3xl font-bold text-center text-white mb-12"
+            className="text-3xl font-bold text-center text-text mb-12" 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
@@ -42,106 +165,38 @@ const Projects: React.FC = () => {
             Featured Projects
           </motion.h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {PROJECTS_DATA.map((project: Project, index: number) => (
-              <motion.div
+            {completedProjects.map((project, index) => (
+              <ProjectCard
                 key={project.id}
-                className="bg-[#2a323a] rounded-lg overflow-hidden shadow-lg flex flex-col min-h-[420px]"
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.5 }}
-                transition={{ duration: 0.5, delay: index * 0.2 }}
-              >
-                <img
-                  src={project.imageUrl}
-                  alt={project.title}
-                  className="w-full h-48 object-cover"
-                  onError={(e) => {
-                    e.currentTarget.src = "/fallback-image.png";
-                  }}
-                />
-
-                <div className="p-6 flex flex-col flex-1 justify-between">
-                  <div>
-                    <div className="flex items-center mb-2">
-                      <h3 className="text-xl font-bold text-white">
-                        {project.title}
-                      </h3>
-                      {project.isContributor && (
-                        <span className="ml-2 text-xs bg-green-500/20 text-green-400 px-2 py-1 rounded-full">
-                          Contributor
-                        </span>
-                      )}
-                    </div>
-
-                    <p className="text-gray-400 mb-4 line-clamp-3">
-                      {project.description}
-                    </p>
-
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {visibleTags(project.tags).map((tag) => (
-                        <motion.span
-                          key={tag}
-                          className="text-xs bg-[#d9c179]/20 text-[#d9c179] px-2 py-1 rounded-full"
-                          whileHover={{ scale: 1.05 }}
-                          transition={{ duration: 0.3 }}
-                        >
-                          {tag}
-                        </motion.span>
-                      ))}
-
-                      {project.tags.length > 4 && (
-                        <motion.span
-                          className="text-xs bg-[#d9c179]/20 text-[#d9c179] px-2 py-1 rounded-full cursor-pointer"
-                          whileHover={{ scale: 1.05 }}
-                          transition={{ duration: 0.3 }}
-                          onClick={() => handleOpenModal(project)}
-                        >
-                          +{project.tags.length - 4} more...
-                        </motion.span>
-                      )}
-                    </div>
-                  </div>
-
-                  <div className="flex justify-between items-center mt-auto space-x-3">
-                    <motion.button
-                      onClick={() => handleOpenModal(project)}
-                      className="text-[#d9c179] hover:underline"
-                      whileHover={{ scale: 1.05 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      Details
-                    </motion.button>
-                    <div className="flex space-x-3">
-                      {project.liveUrl && (
-                        <motion.a
-                          href={project.liveUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-[#d9c179] hover:underline"
-                          whileHover={{ scale: 1.05 }}
-                          transition={{ duration: 0.3 }}
-                        >
-                          Live Demo
-                        </motion.a>
-                      )}
-                      {project.repoUrl && (
-                        <motion.a
-                          href={project.repoUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-[#d9c179] hover:underline"
-                          whileHover={{ scale: 1.05 }}
-                          transition={{ duration: 0.3 }}
-                        >
-                          GitHub
-                        </motion.a>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
+                project={project}
+                index={index}
+                onOpenModal={handleOpenModal}
+              />
             ))}
           </div>
+
+          {developingProjects.length > 0 && (
+            <>
+              <motion.h2
+                className="text-3xl font-bold text-center text-text mb-12 mt-20" 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                On Developing
+              </motion.h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {developingProjects.map((project, index) => (
+                  <ProjectCard
+                    key={project.id}
+                    project={project}
+                    index={index}
+                    onOpenModal={handleOpenModal}
+                  />
+                ))}
+              </div>
+            </>
+          )}
         </div>
       </motion.section>
 
@@ -165,6 +220,11 @@ const Projects: React.FC = () => {
               <h3 className="text-2xl font-bold text-white">
                 {selectedProject.title}
               </h3>
+              {selectedProject.isOnDeveloping && (
+                <span className="ml-2 text-xs bg-blue-500/20 text-blue-400 px-2 py-1 rounded-full">
+                  Developing
+                </span>
+              )}
               {selectedProject.isContributor && (
                 <span className="ml-2 text-xs bg-green-500/20 text-green-400 px-2 py-1 rounded-full">
                   Contributor

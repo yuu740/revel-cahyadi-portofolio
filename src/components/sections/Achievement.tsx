@@ -42,7 +42,6 @@ const Achievement: React.FC = () => {
           Awards & Certificates
         </motion.h2>
 
-        {/* 🔹 Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {currentItems.map((cert: Certificate, index: number) => (
             <motion.div
@@ -99,7 +98,6 @@ const Achievement: React.FC = () => {
           ))}
         </div>
 
-        {/* 🔹 Pagination Controls */}
         <div className="flex justify-center mt-8 space-x-2">
           <button
             disabled={currentPage === 1}

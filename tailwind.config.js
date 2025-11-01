@@ -2,9 +2,9 @@
 export default {
   content: [
     "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}", // Pastikan path ini benar
+    "./src/**/*.{js,ts,jsx,tsx}", 
   ],
-  darkMode: "class", // Tetap gunakan 'class' untuk dark mode
+  darkMode: "class", 
   theme: {
     extend: {},
   },

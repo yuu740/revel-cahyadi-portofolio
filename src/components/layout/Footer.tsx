@@ -34,7 +34,7 @@ const Footer: React.FC = () => {
         {cvData.map((cv, idx) => (
           <motion.div
             key={idx}
-            className="bg-[#1f262c] p-6 rounded-lg flex flex-col h-[500px]"
+            className="bg-[#1f262c] p-6 rounded-lg flex flex-col "
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: idx * 0.1 }}
@@ -42,16 +42,6 @@ const Footer: React.FC = () => {
             <h3 className="text-xl font-semibold text-[#d9c179] mb-4">
               {cv.name}
             </h3>
-
-            <div className="flex-1 mb-4 overflow-hidden rounded">
-              <iframe
-                src={cv.fileUrl}
-                width="100%"
-                height="350px"
-                className="border-0 rounded"
-                title={`${cv.name} Preview`}
-              />
-            </div>
 
             <motion.a
               href={cv.fileUrl}

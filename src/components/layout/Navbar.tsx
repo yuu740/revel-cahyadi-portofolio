@@ -1,18 +1,17 @@
 import React, { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, useScroll, useSpring } from "framer-motion";
+
 
 const navLinks = [
   { href: "#hero", label: "Home" },
   { href: "#about", label: "About" },
-  { href: "#education", label: "Education" },
-  { href: "#experience", label: "Experience" },
-  { href: "#skills", label: "Skills" },
-  { href: "#projects", label: "Projects" },
-
+  { href: "#education", label: "Journey" },
+  { href: "#skills", label: "Work" },
   { href: "#contact", label: "Contact" },
 ];
 
 const Navbar: React.FC = () => {
+
   const [isOpen, setIsOpen] = useState(false);
 
   const navVariants = {
@@ -21,9 +20,25 @@ const Navbar: React.FC = () => {
   };
 
   const menuVariants = {
-    open: { opacity: 1, height: "auto", transition: { duration: 0.3 } },
+    open: {
+      opacity: 1,
+      height: "auto",
+      transition: { duration: 0.3, staggerChildren: 0.05 },
+    },
     closed: { opacity: 0, height: 0, transition: { duration: 0.3 } },
   };
+
+  const mobileLinkVariants = {
+    open: { opacity: 1, y: 0 },
+    closed: { opacity: 0, y: -10 },
+  };
+
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  });
 
   const handleNavClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
@@ -32,7 +47,7 @@ const Navbar: React.FC = () => {
     e.preventDefault();
     const targetElement = document.querySelector(href);
     if (targetElement) {
-      const navbarHeight = 64;
+      const navbarHeight = 64; 
       const elementPosition =
         targetElement.getBoundingClientRect().top + window.scrollY;
       window.scrollTo({
@@ -94,7 +109,6 @@ const Navbar: React.FC = () => {
         </motion.div>
       </div>
 
-      {/* Mobile dropdown */}
       <motion.div
         className="md:hidden mt-2"
         initial="closed"

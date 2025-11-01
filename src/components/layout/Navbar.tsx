@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { motion, useScroll, useSpring } from "framer-motion";
 
-
 const navLinks = [
   { href: "#hero", label: "Home" },
   { href: "#about", label: "About" },
@@ -11,7 +10,6 @@ const navLinks = [
 ];
 
 const Navbar: React.FC = () => {
-
   const [isOpen, setIsOpen] = useState(false);
 
   const navVariants = {
@@ -47,7 +45,7 @@ const Navbar: React.FC = () => {
     e.preventDefault();
     const targetElement = document.querySelector(href);
     if (targetElement) {
-      const navbarHeight = 64; 
+      const navbarHeight = 64;
       const elementPosition =
         targetElement.getBoundingClientRect().top + window.scrollY;
       window.scrollTo({
@@ -60,12 +58,12 @@ const Navbar: React.FC = () => {
 
   return (
     <motion.nav
-      className="bg-[#1f262c] sticky top-0 z-50 p-4 shadow-lg border-b border-gray-700"
+      className="bg-[#1f262c] sticky top-0 z-50 shadow-lg border-b border-gray-700"
       initial="hidden"
       animate="visible"
       variants={navVariants}
     >
-      <div className="container mx-auto flex justify-between items-center">
+      <div className="container mx-auto flex justify-between items-center p-4">
         <motion.a
           href="#hero"
           className="text-xl font-bold text-white"
@@ -110,7 +108,7 @@ const Navbar: React.FC = () => {
       </div>
 
       <motion.div
-        className="md:hidden mt-2"
+        className="md:hidden" 
         initial="closed"
         animate={isOpen ? "open" : "closed"}
         variants={menuVariants}
@@ -120,15 +118,21 @@ const Navbar: React.FC = () => {
             key={link.label}
             href={link.href}
             onClick={(e) => handleNavClick(e, link.href)}
-            className="block py-2 hover:text-[#d9c179] transition-colors text-white"
+            className="block py-2 px-4 hover:text-[#d9c179] transition-colors text-white" 
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.3 }}
             aria-label={link.label}
+            variants={mobileLinkVariants} 
           >
             {link.label}
           </motion.a>
         ))}
       </motion.div>
+
+      <motion.div
+        className="h-1 bg-[#d9c179] origin-left"
+        style={{ scaleX }}
+      />
     </motion.nav>
   );
 };

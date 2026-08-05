@@ -47,7 +47,7 @@ export const PROJECTS_DATA: Project[] = [
     title: "Portfolio",
     since: "2025",
     description:
-      "A personal portfolio website built with React, TypeScript, and Tailwind CSS. Showcasing my background, skills, projects, and experiences in technology, presented with a modern dark-themed design.",
+      "A personal portfolio website built with React Vite, TypeScript, and Tailwind CSS. Showcasing my background, skills, projects, and experiences in technology, presented with a modern dark-themed design.",
     imageUrl: portfolio,
     tags: ["React", "TypeScript", "Tailwind CSS"],
     repoUrl: "https://github.com/yuu740/revel-cahyadi-portofolio",

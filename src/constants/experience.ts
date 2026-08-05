@@ -3,6 +3,18 @@ import type { Experience } from "../interfaces/experience.interface";
 export const EXPERIENCE_DATA: Experience[] = [
   {
     id: 1,
+    type: "internship",
+    title: "Application Developer",
+    institution: "PT Bank Central Asia, Tbk.",
+    period: "February 2026-July 2026",
+    description: [
+      "Designed and developed internal risk management applications to facilitate efficient, centralized monitoring, analysis, and mitigation of banking operational risks.",
+      "Collaborated actively with cybersecurityn risk teams by integrating Secure SDLC principles to ensure the development of resilient features, streamlining the team's ability to proactively identify and mitigate potential security risks early in the development lifecycle.",
+      "Applied a growth mindset to navigate technical constraints and complex business logic; proactively learned new banking domain knowledge and explored technological solutions to overcome development challenges effectively.",
+    ],
+  },
+  {
+    id: 2,
     type: "work",
     title: "Associate Member (Part Time) Developer",
     institution: "IT Division Bina Nusantara",
@@ -13,7 +25,7 @@ export const EXPERIENCE_DATA: Experience[] = [
     ],
   },
   {
-    id: 2,
+    id: 3,
     type: "extracurricular",
     title: "Robotics Club Member",
     institution: "Sinar Dharma Senior High School",
@@ -24,7 +36,7 @@ export const EXPERIENCE_DATA: Experience[] = [
     ],
   },
   {
-    id: 3,
+    id: 4,
     type: "extracurricular",
     title: "Scout Club Member",
     institution: "Sinar Dharma Senior High School",
@@ -35,7 +47,7 @@ export const EXPERIENCE_DATA: Experience[] = [
     ],
   },
   {
-    id: 4,
+    id: 5,
     type: "extracurricular",
     title: "Taekwondo Club Member",
     institution: "Sinar Dharma Junior High School",
@@ -46,7 +58,7 @@ export const EXPERIENCE_DATA: Experience[] = [
     ],
   },
   {
-    id: 5,
+    id: 6,
     type: "extracurricular",
     title: "Scout Club Member",
     institution: "Sinar Dharma Junior High School",

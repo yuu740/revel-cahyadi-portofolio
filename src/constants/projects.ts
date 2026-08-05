@@ -102,7 +102,7 @@ export const PROJECTS_DATA: Project[] = [
     title: "Concrete Crack Detection",
     since: "2025",
     description:
-      "An interactive machine learning web application using Random Forest and HOG 16x16 feature extraction for real-time structural crack detection.",
+      "A computer vision-based project built with a Random Forest classifier and HOG 16x16 feature extraction. It produces a trained model to analyze wall cracks via uploaded images or a direct camera feed capturing the surface condition, all packaged into an interactive mockup interface using the Gradio library.",
     imageUrl: crack,
     tags: ["Python", "Gradio"],
     liveUrl:

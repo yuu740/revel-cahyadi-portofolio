@@ -33,10 +33,13 @@ export const SKILLS_DATA: SkillCategory[] = [
       },
       {
         name: "TypeScript",
-        framework: ["React", "Vite"],
+        framework: ["React", "Vite", "Next"],
       },
       {
         name: "Firebase",
+      },
+      {
+        name: "PostgreSQL",
       },
       {
         name: "Microsoft SQL Server",

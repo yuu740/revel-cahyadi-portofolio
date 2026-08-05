@@ -63,6 +63,7 @@ export const SKILLS_DATA: SkillCategory[] = [
       { name: "Team Collaboration" },
       { name: "Time Management" },
       { name: "Growth Mindset" },
+      { name: "Critical & Creative Thinking" },
     ],
   },
 ];

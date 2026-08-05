@@ -100,7 +100,7 @@ export const PROJECTS_DATA: Project[] = [
   {
     id: "proj7",
     title: "Concrete Crack Detection",
-    since: "2024",
+    since: "2025",
     description:
       "An interactive machine learning web application using Random Forest and HOG 16x16 feature extraction for real-time structural crack detection.",
     imageUrl: crack,

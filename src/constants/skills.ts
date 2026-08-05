@@ -59,6 +59,10 @@ export const SKILLS_DATA: SkillCategory[] = [
   },
   {
     category: "Soft Skills",
-    items: [{ name: "Team Collaboration" }, { name: "Time Management" }],
+    items: [
+      { name: "Team Collaboration" },
+      { name: "Time Management" },
+      { name: "Growth Mindset" },
+    ],
   },
 ];

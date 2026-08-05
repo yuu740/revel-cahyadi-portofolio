@@ -5,6 +5,7 @@ import portfolio from "../assets/images/projects/portfolio.png";
 import titikkondisi from "../assets/images/projects/titikkondisi.jpg";
 import relist from "../assets/images/projects/relist.jpg";
 import remind from "../assets/images/projects/remindapp.jpg";
+import crack from "../assets/images/projects/crackconcrete.png";
 
 export const PROJECTS_DATA: Project[] = [
   {
@@ -26,7 +27,7 @@ export const PROJECTS_DATA: Project[] = [
     liveUrl: "https://nutri-wise-delta.vercel.app/",
     repoUrl: "https://github.com/Dexcop/NutriWise",
     isContributor: true,
-    isOnDeveloping: false
+    isOnDeveloping: false,
   },
   {
     id: "proj2",
@@ -39,7 +40,7 @@ export const PROJECTS_DATA: Project[] = [
     liveUrl: "https://yuu740.github.io/screenome/",
     repoUrl: "https://github.com/yuu740/screenome",
     isContributor: false,
-    isOnDeveloping: false
+    isOnDeveloping: false,
   },
   {
     id: "proj3",
@@ -62,17 +63,19 @@ export const PROJECTS_DATA: Project[] = [
       "A weather mobile-application named TitikKondisi that integrated platform that combines weather data with critical index, such as parameters—air quality, light pollution, moon phases, and more—all in one application. This app built with Flutter with Firebase",
     imageUrl: titikkondisi,
     tags: ["Flutter", "Dart", "Firebase"],
-    liveUrl: "https://github.com/yuu740/titik-kondisi-app-weather/releases/tag/v1.0.0-beta.2",
+    liveUrl:
+      "https://github.com/yuu740/titik-kondisi-app-weather/releases/tag/v1.0.0-beta.2",
     repoUrl: "https://github.com/yuu740/titik-kondisi-app-weather",
     isContributor: false,
-    isOnDeveloping: true,
+    isOnDeveloping: false,
   },
 
   {
     id: "proj5",
     title: "Note Reminder App",
     since: "2025",
-    description:"A note/task reminder mobile-application that developed based on my use case that I used for remind me about the task or note that have deadline",
+    description:
+      "A note/task reminder mobile-application that developed based on my use case that I used for remind me about the task or note that have deadline",
     imageUrl: remind,
     tags: ["Flutter", "Dart", "SQLite"],
     liveUrl: "",
@@ -85,14 +88,27 @@ export const PROJECTS_DATA: Project[] = [
     id: "proj6",
     title: "Relist",
     since: "2025",
-    description:"A reccursive Task Manager Mobile-Application that developed based on my use case that I used for my ordered-reccurence task",
+    description:
+      "A reccursive Task Manager Mobile-Application that developed based on my use case that I used for my ordered-reccurence task",
     imageUrl: relist,
     tags: ["Flutter", "Dart", "SQLite"],
     liveUrl: "https://github.com/yuu740/relist/releases/tag/v1.0.0",
     repoUrl: "https://github.com/yuu740/relist",
     isContributor: false,
-    isOnDeveloping: true,
+    isOnDeveloping: false,
   },
-  
-
+  {
+    id: "proj7",
+    title: "Concrete Crack Detection",
+    since: "2024",
+    description:
+      "An interactive machine learning web application using Random Forest and HOG 16x16 feature extraction for real-time structural crack detection.",
+    imageUrl: crack,
+    tags: ["Python", "Gradio"],
+    liveUrl:
+      "https://huggingface.co/spaces/vel740/concrete-crack-prediction-app",
+    repoUrl: "https://github.com/yuu740/concrete-crack-prediction-app",
+    isContributor: false,
+    isOnDeveloping: false,
+  },
 ];

@@ -1,18 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import atsCV from "../../assets/documents/cv/ATS CV Revel Cahyadi.pdf";
-import creativeCV from "../../assets/documents/cv/CV Revel Cahyadi.pdf";
 const Footer: React.FC = () => {
-  const cvData = [
-    {
-      name: "Professional CV",
-      fileUrl: atsCV,
-    },
-    {
-      name: "Creative CV",
-      fileUrl: creativeCV,
-    },
-  ];
 
   return (
     <motion.footer

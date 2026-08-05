@@ -1,6 +1,6 @@
 export interface Experience {
   id: number;
-  type: "work" | "extracurricular";
+  type: "work" | "extracurricular" | "internship";
   title: string;
   institution: string;
   period: string;
